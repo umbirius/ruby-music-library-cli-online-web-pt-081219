@@ -5,6 +5,7 @@ class Genre
   
   def initialize(name)
     @name = name
+    @songs = []
   end 
   
   def self.all 
@@ -24,5 +25,21 @@ class Genre
     new.save 
     new
   end   
+  
+  def songs
+    @songs
+  end 
+  
+  def add_song(song)
+    if song.genre == nil 
+      song.genre = self
+    end 
+    songs << song unless @songs.include?(song)
+  end 
+  
+  def artists 
+    @artists = songs.map {|song| song.artist} 
+    @artists.uniq
+  end 
   
 end 
