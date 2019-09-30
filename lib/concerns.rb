@@ -1,3 +1,0 @@
-module Concerns::ModuleName
-  
-end 

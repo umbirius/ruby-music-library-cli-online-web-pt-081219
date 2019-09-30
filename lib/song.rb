@@ -44,7 +44,7 @@ class Song
   end 
  
   def self.find_by_name(name)
-    Song.all.detect {|song| song.name == name}
+    all.detect {|x| x.name == name}
   end 
   
   def self.find_or_create_by_name(name)
@@ -54,5 +54,20 @@ class Song
       Song.find_by_name(name)
     end 
   end 
-   
+  
+  def self.new_from_filename(file)
+    name = file.split(" - ")[1]
+    artist_name = file.split(" - ")[0]
+    genre_name = file.split(" - ")[2]
+    genre_name = genre_name.split(".").first
+    artist = Artist.find_or_create_by_name(artist_name)
+    genre = Genre.find_or_create_by_name(genre_name)
+    # binding.pry
+    song = self.new(name, artist, genre) 
+  end 
+  
+  def self.create_from_filename(file)
+    new = new_from_filename(file)
+    new.save
+  end
 end 
