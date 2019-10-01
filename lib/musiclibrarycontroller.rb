@@ -70,7 +70,7 @@ class MusicLibraryController
   def list_songs_by_artist
     puts "Please enter the name of an artist:"
     artist = gets
-    binding.pry
+
     # @artist.songs.each {|song| puts song}
 
   end 

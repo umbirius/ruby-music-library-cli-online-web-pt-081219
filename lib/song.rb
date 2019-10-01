@@ -60,6 +60,7 @@ class Song
     artist_name = file.split(" - ")[0]
     genre_name = file.split(" - ")[2]
     genre_name = genre_name.split(".").first
+
     artist = Artist.find_or_create_by_name(artist_name)
     genre = Genre.find_or_create_by_name(genre_name)
     # binding.pry
@@ -70,4 +71,6 @@ class Song
     new = new_from_filename(file)
     new.save
   end
+
+
 end 
